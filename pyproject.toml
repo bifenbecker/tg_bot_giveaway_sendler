@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "givesendler"
+version = "0.1.0"
+description = "Give Away and Send"
+authors = ["Loo Zy <lsgt0tg@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiogram = "^2.18"
+ujson = "^5.1.0"
+uvloop = "^0.16.0"
+python-dotenv = "^0.19.2"
+emoji = "^1.6.1"
+asyncpg = "^0.25.0"
+aiofiles = "^0.8.0"
+loguru = "^0.5.3"
+aioredis = "^2.0.1"
+APScheduler = "^3.8.1"
+tortoise-orm = "0.17.8"
+aerich = "^0.7.1"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.6.0"
+
+
+[tool.aerich]
+tortoise_orm = "bot.config.TORTOISE_ORM"
+location = "./migrations"
+src_folder = "./."
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,339 @@
+2023-07-07 23:31:41.771 | INFO     | aiogram.utils.executor:_welcome:362 - Bot: Розыгрыши Telegram [@RealLuck_bot]
+2023-07-07 23:31:42.904 | WARNING  | aiogram.utils.executor:_skip_updates:358 - Updates were skipped successfully.
+2023-07-07 23:31:43.215 | INFO     | apscheduler.schedulers.base:start:171 - Scheduler started
+2023-07-07 23:31:43.216 | INFO     | aiogram.dispatcher.dispatcher:start_polling:358 - Start polling.
+2023-07-07 23:31:46.956 | ERROR    | logging:exception:1481 - Cause exception while getting updates.
+Traceback (most recent call last):
+
+  File "/home/rbulgakov/Projects/tg_bots/tg_bot_givesendler/start.py", line 6, in <module>
+    runner.start_polling()
+    │      └ <function Executor.start_polling at 0x7fadeb3cf700>
+    └ <aiogram.utils.executor.Executor object at 0x7fadea4c5b80>
+
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/executor.py", line 323, in start_polling
+    loop.run_forever()
+    │    └ <method 'run_forever' of 'uvloop.loop.Loop' objects>
+    └ <uvloop.Loop running=True closed=False debug=False>
+> File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+                    │    │   └ <function Bot.get_updates at 0x7fadeb7fe9d0>
+                    │    └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                    └ <aiogram.dispatcher.dispatcher.Dispatcher object at 0x7fadea8418e0>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+                   │    │       │   │       │            └ {'timeout': 20}
+                   │    │       │   │       └ <aiogram.utils.helper.Item object at 0x7faded0502b0>
+                   │    │       │   └ <class 'aiogram.bot.api.Methods'>
+                   │    │       └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+                   │    └ <function BaseBot.request at 0x7fadeb7f7790>
+                   └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+                 │   │                  │    │              │    │       │             │       │     └ None
+                 │   │                  │    │              │    │       │             │       └ {'timeout': 20}
+                 │   │                  │    │              │    │       │             └ 'getUpdates'
+                 │   │                  │    │              │    │       └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                 │   │                  │    │              │    └ TelegramAPIServer(base='https://api.telegram.org/bot{token}/{method}', file='https://api.telegram.org/file/bot{token}/{path}')
+                 │   │                  │    │              └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                 │   │                  │    └ <function BaseBot.get_session at 0x7fadeb7f7040>
+                 │   │                  └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                 │   └ <function make_request at 0x7fadeba54940>
+                 └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           │            │       │        │             │        │             │        └ <function ClientResponse.text at 0x7fadec37ed30>
+           │            │       │        │             │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │             │        │               <CIMult...
+           │            │       │        │             │        └ 409
+           │            │       │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │               <CIMult...
+           │            │       │        └ <property object at 0x7fadec682f90>
+           │            │       └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │         <CIMult...
+           │            └ 'getUpdates'
+           └ <function check_result at 0x7fadeba54670>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+    │          │             │      └ 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+    │          │             └ <classmethod object at 0x7fadeba4bd60>
+    │          └ <class 'aiogram.utils.exceptions.ConflictError'>
+    └ <module 'aiogram.utils.exceptions' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+          │   │   │       └ 'conflict: terminated by other getupdates request; make sure that only one bot instance is running'
+          │   │   └ None
+          │   └ <class 'aiogram.utils.exceptions.ConflictError'>
+          └ <class 'aiogram.utils.exceptions.TerminatedByOtherGetUpdates'>
+
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2023-07-07 23:31:57.088 | ERROR    | logging:exception:1481 - Cause exception while getting updates.
+Traceback (most recent call last):
+
+  File "/home/rbulgakov/Projects/tg_bots/tg_bot_givesendler/start.py", line 6, in <module>
+    runner.start_polling()
+    │      └ <function Executor.start_polling at 0x7fadeb3cf700>
+    └ <aiogram.utils.executor.Executor object at 0x7fadea4c5b80>
+
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/executor.py", line 323, in start_polling
+    loop.run_forever()
+    │    └ <method 'run_forever' of 'uvloop.loop.Loop' objects>
+    └ <uvloop.Loop running=True closed=False debug=False>
+> File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+                    │    │   └ <function Bot.get_updates at 0x7fadeb7fe9d0>
+                    │    └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                    └ <aiogram.dispatcher.dispatcher.Dispatcher object at 0x7fadea8418e0>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+                   │    │       │   │       │            └ {'timeout': 20}
+                   │    │       │   │       └ <aiogram.utils.helper.Item object at 0x7faded0502b0>
+                   │    │       │   └ <class 'aiogram.bot.api.Methods'>
+                   │    │       └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+                   │    └ <function BaseBot.request at 0x7fadeb7f7790>
+                   └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+                 │   │                  │    │              │    │       │             │       │     └ None
+                 │   │                  │    │              │    │       │             │       └ {'timeout': 20}
+                 │   │                  │    │              │    │       │             └ 'getUpdates'
+                 │   │                  │    │              │    │       └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                 │   │                  │    │              │    └ TelegramAPIServer(base='https://api.telegram.org/bot{token}/{method}', file='https://api.telegram.org/file/bot{token}/{path}')
+                 │   │                  │    │              └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                 │   │                  │    └ <function BaseBot.get_session at 0x7fadeb7f7040>
+                 │   │                  └ <aiogram.bot.bot.Bot object at 0x7faded9b4610>
+                 │   └ <function make_request at 0x7fadeba54940>
+                 └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           │            │       │        │             │        │             │        └ <function ClientResponse.text at 0x7fadec37ed30>
+           │            │       │        │             │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │             │        │               <CIMult...
+           │            │       │        │             │        └ 409
+           │            │       │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │               <CIMult...
+           │            │       │        └ <property object at 0x7fadec682f90>
+           │            │       └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │         <CIMult...
+           │            └ 'getUpdates'
+           └ <function check_result at 0x7fadeba54670>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+    │          │             │      └ 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+    │          │             └ <classmethod object at 0x7fadeba4bd60>
+    │          └ <class 'aiogram.utils.exceptions.ConflictError'>
+    └ <module 'aiogram.utils.exceptions' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+          │   │   │       └ 'conflict: terminated by other getupdates request; make sure that only one bot instance is running'
+          │   │   └ None
+          │   └ <class 'aiogram.utils.exceptions.ConflictError'>
+          └ <class 'aiogram.utils.exceptions.TerminatedByOtherGetUpdates'>
+
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2023-07-07 23:32:00.995 | INFO     | tortoise:close_connections:637 - Tortoise-ORM shutdown
+2023-07-07 23:32:00.996 | INFO     | aiogram.dispatcher.dispatcher:stop_polling:433 - Stop polling...
+2023-07-07 23:32:00.996 | INFO     | apscheduler.schedulers.base:shutdown:203 - Scheduler has been shut down
+2023-07-07 23:32:00.997 | WARNING  | aiogram.utils.executor:start_polling:329 - Goodbye!
+2023-07-10 17:22:10.172 | INFO     | aiogram.utils.executor:_welcome:362 - Bot: Розыгрыши Telegram [@RealLuck_bot]
+2023-07-10 17:22:11.326 | WARNING  | aiogram.utils.executor:_skip_updates:358 - Updates were skipped successfully.
+2023-07-10 17:22:11.445 | INFO     | tortoise:close_connections:637 - Tortoise-ORM shutdown
+2023-07-10 17:26:44.090 | INFO     | aiogram.utils.executor:_welcome:362 - Bot: Розыгрыши Telegram [@RealLuck_bot]
+2023-07-10 17:26:45.225 | WARNING  | aiogram.utils.executor:_skip_updates:358 - Updates were skipped successfully.
+2023-07-10 17:26:45.446 | INFO     | apscheduler.schedulers.base:start:171 - Scheduler started
+2023-07-10 17:26:45.447 | INFO     | aiogram.dispatcher.dispatcher:start_polling:358 - Start polling.
+2023-07-10 17:26:49.268 | ERROR    | logging:exception:1481 - Cause exception while getting updates.
+Traceback (most recent call last):
+
+  File "/home/rbulgakov/Projects/tg_bots/tg_bot_givesendler/start.py", line 6, in <module>
+    runner.start_polling()
+    │      └ <function Executor.start_polling at 0x7fcfb0c4f700>
+    └ <aiogram.utils.executor.Executor object at 0x7fcfafa17b20>
+
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/executor.py", line 323, in start_polling
+    loop.run_forever()
+    │    └ <method 'run_forever' of 'uvloop.loop.Loop' objects>
+    └ <uvloop.Loop running=True closed=False debug=False>
+> File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+                    │    │   └ <function Bot.get_updates at 0x7fcfb0dbe9d0>
+                    │    └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                    └ <aiogram.dispatcher.dispatcher.Dispatcher object at 0x7fcfafa05d30>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+                   │    │       │   │       │            └ {'timeout': 20}
+                   │    │       │   │       └ <aiogram.utils.helper.Item object at 0x7fcfb26bb2b0>
+                   │    │       │   └ <class 'aiogram.bot.api.Methods'>
+                   │    │       └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+                   │    └ <function BaseBot.request at 0x7fcfb0db7790>
+                   └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+                 │   │                  │    │              │    │       │             │       │     └ None
+                 │   │                  │    │              │    │       │             │       └ {'timeout': 20}
+                 │   │                  │    │              │    │       │             └ 'getUpdates'
+                 │   │                  │    │              │    │       └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   │                  │    │              │    └ TelegramAPIServer(base='https://api.telegram.org/bot{token}/{method}', file='https://api.telegram.org/file/bot{token}/{path}')
+                 │   │                  │    │              └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   │                  │    └ <function BaseBot.get_session at 0x7fcfb0db7040>
+                 │   │                  └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   └ <function make_request at 0x7fcfb0dd5940>
+                 └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           │            │       │        │             │        │             │        └ <function ClientResponse.text at 0x7fcfb197ed30>
+           │            │       │        │             │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │             │        │               <CIMult...
+           │            │       │        │             │        └ 409
+           │            │       │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │               <CIMult...
+           │            │       │        └ <property object at 0x7fcfb1c6d130>
+           │            │       └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │         <CIMult...
+           │            └ 'getUpdates'
+           └ <function check_result at 0x7fcfb0dd5670>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+    │          │             │      └ 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+    │          │             └ <classmethod object at 0x7fcfb0dccd00>
+    │          └ <class 'aiogram.utils.exceptions.ConflictError'>
+    └ <module 'aiogram.utils.exceptions' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+          │   │   │       └ 'conflict: terminated by other getupdates request; make sure that only one bot instance is running'
+          │   │   └ None
+          │   └ <class 'aiogram.utils.exceptions.ConflictError'>
+          └ <class 'aiogram.utils.exceptions.TerminatedByOtherGetUpdates'>
+
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2023-07-10 17:26:59.418 | ERROR    | logging:exception:1481 - Cause exception while getting updates.
+Traceback (most recent call last):
+
+  File "/home/rbulgakov/Projects/tg_bots/tg_bot_givesendler/start.py", line 6, in <module>
+    runner.start_polling()
+    │      └ <function Executor.start_polling at 0x7fcfb0c4f700>
+    └ <aiogram.utils.executor.Executor object at 0x7fcfafa17b20>
+
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/executor.py", line 323, in start_polling
+    loop.run_forever()
+    │    └ <method 'run_forever' of 'uvloop.loop.Loop' objects>
+    └ <uvloop.Loop running=True closed=False debug=False>
+> File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+                    │    │   └ <function Bot.get_updates at 0x7fcfb0dbe9d0>
+                    │    └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                    └ <aiogram.dispatcher.dispatcher.Dispatcher object at 0x7fcfafa05d30>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+                   │    │       │   │       │            └ {'timeout': 20}
+                   │    │       │   │       └ <aiogram.utils.helper.Item object at 0x7fcfb26bb2b0>
+                   │    │       │   └ <class 'aiogram.bot.api.Methods'>
+                   │    │       └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+                   │    └ <function BaseBot.request at 0x7fcfb0db7790>
+                   └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+                 │   │                  │    │              │    │       │             │       │     └ None
+                 │   │                  │    │              │    │       │             │       └ {'timeout': 20}
+                 │   │                  │    │              │    │       │             └ 'getUpdates'
+                 │   │                  │    │              │    │       └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   │                  │    │              │    └ TelegramAPIServer(base='https://api.telegram.org/bot{token}/{method}', file='https://api.telegram.org/file/bot{token}/{path}')
+                 │   │                  │    │              └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   │                  │    └ <function BaseBot.get_session at 0x7fcfb0db7040>
+                 │   │                  └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   └ <function make_request at 0x7fcfb0dd5940>
+                 └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           │            │       │        │             │        │             │        └ <function ClientResponse.text at 0x7fcfb197ed30>
+           │            │       │        │             │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │             │        │               <CIMult...
+           │            │       │        │             │        └ 409
+           │            │       │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │               <CIMult...
+           │            │       │        └ <property object at 0x7fcfb1c6d130>
+           │            │       └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │         <CIMult...
+           │            └ 'getUpdates'
+           └ <function check_result at 0x7fcfb0dd5670>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+    │          │             │      └ 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+    │          │             └ <classmethod object at 0x7fcfb0dccd00>
+    │          └ <class 'aiogram.utils.exceptions.ConflictError'>
+    └ <module 'aiogram.utils.exceptions' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+          │   │   │       └ 'conflict: terminated by other getupdates request; make sure that only one bot instance is running'
+          │   │   └ None
+          │   └ <class 'aiogram.utils.exceptions.ConflictError'>
+          └ <class 'aiogram.utils.exceptions.TerminatedByOtherGetUpdates'>
+
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2023-07-10 17:27:09.545 | ERROR    | logging:exception:1481 - Cause exception while getting updates.
+Traceback (most recent call last):
+
+  File "/home/rbulgakov/Projects/tg_bots/tg_bot_givesendler/start.py", line 6, in <module>
+    runner.start_polling()
+    │      └ <function Executor.start_polling at 0x7fcfb0c4f700>
+    └ <aiogram.utils.executor.Executor object at 0x7fcfafa17b20>
+
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/executor.py", line 323, in start_polling
+    loop.run_forever()
+    │    └ <method 'run_forever' of 'uvloop.loop.Loop' objects>
+    └ <uvloop.Loop running=True closed=False debug=False>
+> File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+                    │    │   └ <function Bot.get_updates at 0x7fcfb0dbe9d0>
+                    │    └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                    └ <aiogram.dispatcher.dispatcher.Dispatcher object at 0x7fcfafa05d30>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+                   │    │       │   │       │            └ {'timeout': 20}
+                   │    │       │   │       └ <aiogram.utils.helper.Item object at 0x7fcfb26bb2b0>
+                   │    │       │   └ <class 'aiogram.bot.api.Methods'>
+                   │    │       └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+                   │    └ <function BaseBot.request at 0x7fcfb0db7790>
+                   └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+                 │   │                  │    │              │    │       │             │       │     └ None
+                 │   │                  │    │              │    │       │             │       └ {'timeout': 20}
+                 │   │                  │    │              │    │       │             └ 'getUpdates'
+                 │   │                  │    │              │    │       └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   │                  │    │              │    └ TelegramAPIServer(base='https://api.telegram.org/bot{token}/{method}', file='https://api.telegram.org/file/bot{token}/{path}')
+                 │   │                  │    │              └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   │                  │    └ <function BaseBot.get_session at 0x7fcfb0db7040>
+                 │   │                  └ <aiogram.bot.bot.Bot object at 0x7fcfb4271610>
+                 │   └ <function make_request at 0x7fcfb0dd5940>
+                 └ <module 'aiogram.bot.api' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-pac...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           │            │       │        │             │        │             │        └ <function ClientResponse.text at 0x7fcfb197ed30>
+           │            │       │        │             │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │             │        │               <CIMult...
+           │            │       │        │             │        └ 409
+           │            │       │        │             └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │       │        │               <CIMult...
+           │            │       │        └ <property object at 0x7fcfb1c6d130>
+           │            │       └ <ClientResponse(https://api.telegram.org/bot691554325:AAGd3HYMEVx-0lhbwFcSE2rOrNrGFF9GBYM/getUpdates) [409 Conflict]>
+           │            │         <CIMult...
+           │            └ 'getUpdates'
+           └ <function check_result at 0x7fcfb0dd5670>
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+    │          │             │      └ 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+    │          │             └ <classmethod object at 0x7fcfb0dccd00>
+    │          └ <class 'aiogram.utils.exceptions.ConflictError'>
+    └ <module 'aiogram.utils.exceptions' from '/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9...
+  File "/home/rbulgakov/.cache/pypoetry/virtualenvs/givesendler-5OUYxS3U-py3.9/lib/python3.9/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+          │   │   │       └ 'conflict: terminated by other getupdates request; make sure that only one bot instance is running'
+          │   │   └ None
+          │   └ <class 'aiogram.utils.exceptions.ConflictError'>
+          └ <class 'aiogram.utils.exceptions.TerminatedByOtherGetUpdates'>
+
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2023-07-10 17:27:10.008 | INFO     | tortoise:close_connections:637 - Tortoise-ORM shutdown
+2023-07-10 17:27:10.008 | INFO     | aiogram.dispatcher.dispatcher:stop_polling:433 - Stop polling...
+2023-07-10 17:27:10.009 | INFO     | apscheduler.schedulers.base:shutdown:203 - Scheduler has been shut down
+2023-07-10 17:27:10.009 | WARNING  | aiogram.utils.executor:start_polling:329 - Goodbye!
